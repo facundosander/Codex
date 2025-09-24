@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visor de reportes RPT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="page__header">
+      <h1>Visor de rechazos</h1>
+      <p class="page__description">Carga tus archivos RPT para revisar los rechazos. Las filas duplicadas se ignoran automaticamente y los datos quedan guardados en el servidor.</p>
+      <div class="controls">
+        <label class="file-upload">
+          <span class="file-upload__label">Cargar archivo RPT</span>
+          <input type="file" id="fileInput" accept=".rpt" multiple />
+        </label>
+        <button id="removeResolved" type="button" disabled>Eliminar filas resueltas</button>
+      </div>
+      <div class="filters">
+        <div class="filter-field">
+          <label for="fromDate">Desde</label>
+          <input type="date" id="fromDate" />
+        </div>
+        <div class="filter-field">
+          <label for="toDate">Hasta</label>
+          <input type="date" id="toDate" />
+        </div>
+        <div class="filter-field filter-field--grow">
+          <label for="detailFilter">Detalle rechazo</label>
+          <input type="text" id="detailFilter" placeholder="Buscar texto en el detalle" />
+        </div>
+        <button id="clearFilters" type="button">Restablecer filtros</button>
+      </div>
+      <div id="summary" class="summary"></div>
+      <div class="pagination" id="paginationControls">
+        <button id="prevPage" type="button">Anterior</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" type="button">Siguiente</button>
+      </div>
+    </section>
+
+    <section class="table-wrapper">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>EmpRUC</th>
+            <th>EmpRazonSocial</th>
+            <th>EmpNom</th>
+            <th>RepFecha</th>
+            <th>RepLiqEstadoConsulta</th>
+            <th>RepDetalleRechazo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
